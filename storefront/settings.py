@@ -13,7 +13,7 @@ SECRET_KEY = 'django-insecure-il%!1nv#pov4qwtg7n5qyq9ig7nj@0a1bjzeet=!h$k)y3h1w%
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["*"]
 
 
 # Application definition
@@ -23,12 +23,15 @@ INSTALLED_APPS = [
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.messages',
+    'django.contrib.sessions',
     'django.contrib.staticfiles',
 
     'playground',
+    'debug_toolbar'
 ]
 
 MIDDLEWARE = [
+    'debug_toolbar.middleware.DebugToolbarMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -88,7 +91,9 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-
+INTERNAL_IPS = [
+    '127.0.0.1',
+]
 # Internationalization
 # https://docs.djangoproject.com/en/5.0/topics/i18n/
 
