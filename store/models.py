@@ -7,6 +7,7 @@ class Promotion(models.Model):
 
 class Collection(models.Model):
     title = models.CharField(max_length=255)
+    featured_product_id = models.IntegerField()
 
 
 class Product(models.Model):
