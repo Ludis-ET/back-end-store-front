@@ -10,6 +10,6 @@ def index(request):
     # except ObjectDoesNotExist:
     #     pass
     # list(query_set)
-    query_set = Product.objects.order_by('title')
+    query_set = Product.objects.order_by('title').filter(unit_price__lt=10)
 
-    return render(request,'index.html',{'products':list(query_set)})
+    return render(request,'index.html',{'products':list(query_set),'query':query_set})
