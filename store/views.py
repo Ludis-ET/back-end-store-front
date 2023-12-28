@@ -13,6 +13,9 @@ def product_list(request):
 
 @api_view()
 def product_detail(request,id):
-    product = Product.objects.get(pk=id)
-    serializer = ProductSterializer(product)
-    return Response(serializer.data)
+    try:
+        product = Product.objects.get(pk=id)
+        serializer = ProductSterializer(product)
+        return Response(serializer.data)
+    except Product.DoesNotExist:
+         return Response(status=404)
