@@ -10,7 +10,9 @@ from .models import *
 # Create your views here.
 @api_view()
 def product_list(request):
-    return Response('ok')
+    queryset = Product.objects.select_related('collection').all()
+    serializer = ProductSterializer(queryset,many=True)
+    return Response(serializer.data)
 
 
 @api_view()
