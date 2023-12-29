@@ -15,6 +15,7 @@ def product_list(request):
         serializer = ProductSterializer(queryset,many=True,context={'request':request})
         return Response(serializer.data)
     elif request.method == 'POST':
+        serializer = ProductSterializer(data=request.data)
         return Response("ok")
 
 
