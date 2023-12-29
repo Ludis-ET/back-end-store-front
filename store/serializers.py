@@ -11,7 +11,7 @@ class CollectionSerializer(serializers.ModelSerializer):
 class ProductSterializer(serializers.ModelSerializer):
     class Meta:
         model = Product
-        fields = ['id','title','unit_price','price_with_tax','collection'] # '__all__'  bad practice
+        fields = ['id','title','description','slug','inventory','unit_price','price_with_tax','collection'] # '__all__'  bad practice
     # id = serializers.IntegerField()
     # title = serializers.CharField(max_length=255)
     # unit_price = serializers.DecimalField(max_digits=6,decimal_places=2)
