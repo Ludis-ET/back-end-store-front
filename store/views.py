@@ -8,7 +8,7 @@ from rest_framework.viewsets import ModelViewSet
 from rest_framework import status
 from rest_framework.generics import *
 from .models import *
-from .serializers import CollectionSerializer, ProductSerializer
+from .serializers import *
 
 
 class ProductViewSet(ModelViewSet):
@@ -36,3 +36,9 @@ class CollectionViewSet(ModelViewSet):
         if Collection.objects.filter(product_id=kwargs['pk']).count() > 0:
             return Response({'error': 'Collection cannot be deleted because it is associated with an order item.'}, status=status.HTTP_405_METHOD_NOT_ALLOWED)
         return super().destroy(request,*args, **kwargs)
+    
+
+
+class ReviewViewSet(ModelViewSet):
+    queryset = Review.objects.all()
+    serializer_class = ReviewSerializer
